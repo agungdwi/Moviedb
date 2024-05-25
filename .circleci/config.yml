@@ -14,6 +14,12 @@ jobs:
           name: Check Java Version
           command: java -version
       - run:
+          name: Upgrade to Java 21
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y openjdk-21-jdk
+            sudo update-java-alternatives -s java-21-openjdk
+      - run:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
       - run:

@@ -12,8 +12,8 @@ jobs:
       - run:
           name: Set Java Version
           command: |
-            sudo update-alternatives --set java /usr/lib/jvm/<your-desired-java-version>/bin/java
-            sudo update-alternatives --set javac /usr/lib/jvm/<your-desired-java-version>/bin/javac
+            sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+            sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
             java -version
       - restore_cache:
           key: android-orb-v1-

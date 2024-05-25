@@ -10,7 +10,7 @@ orbs:
 
 jobs:
   build:
-    executor: android/android
+    executor: java17
     steps:
       - checkout
       - restore_cache:

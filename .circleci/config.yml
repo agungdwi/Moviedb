@@ -11,14 +11,21 @@ jobs:
       - restore_cache:
           key: android-orb-v1-
       - run:
-          name: Check Java Version
-          command: java -version
+          name: Disable Cloud SDK repository
+          command: |
+            sudo sed -i '/cloud-sdk-buster/s/^deb/#deb/' /etc/apt/sources.list.d/google-cloud-sdk.list
       - run:
-          name: Upgrade to Java 21
+          name: Update package lists and install Java 21
           command: |
             sudo apt-get update
+            sudo apt-get install -y openjdk-11-jdk
             sudo apt-get install -y openjdk-21-jdk
-            sudo update-java-alternatives -s java-21-openjdk
+      - run:
+          name: Set Java 21 as default
+          command: sudo update-java-alternatives -s java-21-openjdk
+      - run:
+          name: Check Java Version
+          command: java -version
       - run:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew

@@ -8,20 +8,6 @@ jobs:
     executor: android/android
     steps:
       - checkout
-      - run:
-          name: Install OpenJDK 17
-          command: |
-            sudo apt-get update && sudo apt-get install openjdk-17-jdk
-            echo "OpenJDK 17 installed"
-      - run:
-          name: Set Java Version
-          command: |
-            sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
-            sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
-            echo "Java version set"
-      - run:
-          name: Verify Java Version
-          command: java -version
       - restore_cache:
           key: android-orb-v1-
       - run:

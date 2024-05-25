@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id ("androidx.navigation.safeargs")
+    id ("com.google.gms.google-services")
+    id ("com.google.firebase.crashlytics")
 }
 
 android {
@@ -49,4 +51,7 @@ dependencies {
     implementation(project(":core"))
     implementation (libs.androidx.core.splashscreen)
 
+//crashnalytics
+    implementation ("com.google.firebase:firebase-analytics-ktx:22.0.0")
+    implementation ("com.google.firebase:firebase-crashlytics:19.0.0")
 }

@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-parcelize")
     id("com.google.devtools.ksp")
+    id ("com.google.gms.google-services")
+    id ("com.google.firebase.crashlytics")
 }
 
 android {
@@ -59,6 +61,13 @@ dependencies {
     api(libs.androidx.junit)
     api(libs.androidx.espresso.core)
     api(libs.androidx.navigation.dynamic.features.fragment)
+
+    //Timber
+    api ("com.jakewharton.timber:timber:4.7.1")
+
+    //crashnalytics
+    api ("com.google.firebase:firebase-analytics-ktx:22.0.0")
+    api ("com.google.firebase:firebase-crashlytics:19.0.0")
 
     implementation(libs.androidx.room.runtime)
     implementation(libs.retrofit)

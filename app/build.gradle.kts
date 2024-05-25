@@ -48,22 +48,5 @@ android {
 dependencies {
     implementation(project(":core"))
     implementation (libs.androidx.core.splashscreen)
-//    implementation(libs.androidx.appcompat)
-//    implementation(libs.material)
-//    implementation(libs.androidx.activity)
-//    implementation(libs.androidx.constraintlayout)
 
-//    implementation(libs.androidx.room.runtime)
-//    implementation(libs.retrofit)
-//    implementation(libs.converter.gson)
-//    implementation(libs.logging.interceptor)
-//    implementation(libs.androidx.room.ktx)
-//    implementation (libs.insert.koin.koin.core)
-//    implementation (libs.insert.koin.koin.android)
-//    implementation(libs.androidx.room.paging)
-////    implementation (libs.koin.android.viewmodel)
-//    kapt(libs.androidx.room.compiler)
-//
-//
-//    annotationProcessor(libs.compiler)
 }

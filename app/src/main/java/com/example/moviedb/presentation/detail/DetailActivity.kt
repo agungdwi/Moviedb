@@ -72,10 +72,10 @@ class DetailActivity : AppCompatActivity() {
 
     private fun insertDeleteFavorite() {
         if (!isFavorite) {
-            movie?.let { detailViewModel.setFavorite(it) }
+            movie.let { detailViewModel.setFavorite(it) }
             isFavorite = !isFavorite
         } else {
-            movie?.let { detailViewModel.deleteFavorite(it) }
+            movie.let { detailViewModel.deleteFavorite(it) }
             isFavorite = !isFavorite
         }
     }

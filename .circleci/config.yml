@@ -8,6 +8,13 @@ jobs:
     executor: android/android
     steps:
       - checkout
+      # Set Java version
+      - run:
+          name: Set Java Version
+          command: |
+            sudo update-alternatives --set java /usr/lib/jvm/<your-desired-java-version>/bin/java
+            sudo update-alternatives --set javac /usr/lib/jvm/<your-desired-java-version>/bin/javac
+            java -version
       - restore_cache:
           key: android-orb-v1-
       - run:

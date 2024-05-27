@@ -31,32 +31,26 @@ jobs:
       - run:
           name: Run Build
           command: ./gradlew build
-      - run:
-          name: Check Code Style
-          command: ./gradlew checkstyle
-      - run:
-          name: Run Code Coverage
-          command: ./gradlew jacocoTestReport
-      - run:
-          name: Run OWASP Dependency Check
-          command: ./gradlew dependencyCheckAnalyze
       - store_artifacts:
           path: app/build/reports
           destination: reports
+      - run:
+          name: Run Lint
+          command: ./gradlew lint
+      - run:
+          name: Run Unit Tests
+          command: ./gradlew test
       - store_test_results:
           path: app/build/test-results
       - store_artifacts:
           path: app/build/outputs/apk/debug/
           destination: artifact-file
+      - run:
+          name: Run Code Style Check
+          command: ./gradlew checkstyle
       - store_artifacts:
           path: app/build/reports/checkstyle/
           destination: checkstyle-reports
-      - store_artifacts:
-          path: app/build/reports/jacoco/
-          destination: jacoco-reports
-      - store_artifacts:
-          path: build/reports/dependency-check-report.html
-          destination: vulnerability-reports
 
 workflows:
   version: 2

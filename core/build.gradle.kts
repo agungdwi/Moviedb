@@ -45,13 +45,7 @@ dependencies {
     api(libs.material)
     api(libs.androidx.appcompat)
     api(libs.androidx.core.ktx)
-    api(libs.androidx.lifecycle.viewmodel.ktx)
     api(libs.androidx.constraintlayout)
-    api(libs.androidx.lifecycle.livedata.ktx)
-    api(libs.androidx.navigation.fragment.ktx)
-    api(libs.androidx.navigation.ui.ktx)
-    api(libs.kotlinx.coroutines.core)
-    api(libs.kotlinx.coroutines.android)
     api(libs.androidx.swiperefreshlayout)
     api(libs.glide)
     api(libs.androidx.paging.runtime.ktx)
@@ -59,25 +53,39 @@ dependencies {
     api(libs.junit)
     api(libs.androidx.junit)
     api(libs.androidx.espresso.core)
+
+    api ("com.squareup.leakcanary:leakcanary-android:2.12")
+
+    //coroutines Flow
+    api(libs.kotlinx.coroutines.core)
+    api(libs.kotlinx.coroutines.android)
+
+    //navigation
+    api(libs.androidx.navigation.fragment.ktx)
+    api(libs.androidx.navigation.ui.ktx)
     api(libs.androidx.navigation.dynamic.features.fragment)
+
+    //lifecycle
+    api(libs.androidx.lifecycle.viewmodel.ktx)
+    api(libs.androidx.lifecycle.livedata.ktx)
 
     //Timber
     api ("com.jakewharton.timber:timber:4.7.1")
 
-
-
+    //room
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.paging)
+    ksp(libs.androidx.room.compiler)
+
+    //retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
-    implementation(libs.androidx.room.ktx)
+
+    //koin
     api (libs.insert.koin.koin.core)
     api (libs.insert.koin.koin.android)
-    implementation(libs.androidx.room.paging)
-
-//    implementation (libs.koin.android.viewmodel)
-    ksp(libs.androidx.room.compiler)
-
 
     annotationProcessor(libs.compiler)
 

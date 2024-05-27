@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomSearchView" parent="Widget.AppCompat.SearchView">
+        <item name="android:radius">8dp</item>
+        <item name="android:editTextColor">@color/textSecondary</item>
+        <item name="android:textColorHint">@color/textSecondary</item>
+        <item name="searchIcon">@drawable/baseline_search_24</item>
+        <item name="closeIcon">@drawable/baseline_close_24</item>
+    </style>
+</resources>

@@ -37,7 +37,7 @@ class MovieListAdapter: ListAdapter<Movie, MovieListAdapter.ViewHolder>(DIFF_CAL
                     .placeholder(R.drawable.image_not_found)
                     .into(ivMovie)
                 ivMovie.contentDescription = data.title
-                ivForeground.contentDescription = data.title
+//                ivForeground.contentDescription = data.title
 
             }
 

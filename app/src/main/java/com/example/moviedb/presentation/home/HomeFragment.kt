@@ -46,8 +46,6 @@ class HomeFragment : Fragment() {
             }
         }
 
-
-
         val layoutManager =
             GridLayoutManager(requireActivity(), calculateSpanCount(requireActivity())).apply {
                 spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
@@ -69,7 +67,6 @@ class HomeFragment : Fragment() {
 
 
         homeViewModel.movies.observe(viewLifecycleOwner) { pagingData ->
-            Log.d("HomeFragment", "PagingData received")
             adapter.submitData(lifecycle, pagingData)
         }
 
@@ -89,6 +86,12 @@ class HomeFragment : Fragment() {
         }
 
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Detach the SwipeRefreshLayout to prevent leaking
+        binding.swipeRefreshLayout.setOnRefreshListener(null)
     }
 
 }

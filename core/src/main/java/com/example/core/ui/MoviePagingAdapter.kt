@@ -38,7 +38,7 @@ class MoviePagingAdapter: PagingDataAdapter<Movie, MoviePagingAdapter.ViewHolder
                         .placeholder(R.drawable.image_not_found)
                         .into(ivMovie)
                     ivMovie.contentDescription = data.title
-                    ivForeground.contentDescription = data.title
+//                    ivForeground.contentDescription = data.title
 
 
                 }

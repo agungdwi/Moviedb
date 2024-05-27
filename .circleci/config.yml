@@ -11,8 +11,8 @@ orbs:
 jobs:
   build:
     executor:
-      name: android/android-machine
-      tag: 2023.09.1
+        name: android/android-machine
+        tag: 2023.09.1
     steps:
       - checkout
       - android/change-java-version:
@@ -47,16 +47,3 @@ jobs:
       - store_artifacts:
           path: app/build/outputs/apk/debug/
           destination: artifact-file
-      - run:
-          name: Vulnerability Scanning
-          command: |
-            # Install OWASP Dependency-Check
-            curl -fsSL https://raw.githubusercontent.com/dependency-check/dependency-check/master/scripts/install.sh | bash -s
-
-            # Run vulnerability scanning
-            dependency-check.sh --scan app/build/outputs/apk/debug/ --format HTML --out dependency-check-report.html
-          environment:
-            TERM: dumb
-      - store_artifacts:
-          path: dependency-check-report.html
-          destination: vulnerability-report

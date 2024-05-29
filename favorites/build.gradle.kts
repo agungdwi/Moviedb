@@ -32,6 +32,7 @@ android {
 
 
 dependencies {
+    applySharedDeps()
     implementation(project(":core"))
     implementation(project(":app"))
 }

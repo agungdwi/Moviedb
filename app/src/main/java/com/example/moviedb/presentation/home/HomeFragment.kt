@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
@@ -38,7 +39,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val supportActionBar = (requireActivity() as AppCompatActivity).supportActionBar
+        supportActionBar?.show()
         adapter = MoviePagingAdapter().apply {
             onItemClick = { movie: Movie ->
                 val action = HomeFragmentDirections.actionNavigationHomeToDetailActivity(movie)
@@ -91,7 +93,18 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         // Detach the SwipeRefreshLayout to prevent leaking
-        binding.swipeRefreshLayout.setOnRefreshListener(null)
+        (binding.swipeRefreshLayout.parent as? ViewGroup)?.removeView(binding.swipeRefreshLayout)
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.swipeRefreshLayout.isEnabled = false
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.swipeRefreshLayout.isEnabled = true
     }
 
 }

@@ -8,6 +8,8 @@ import com.example.core.data.local.room.MovieDatabase
 import com.example.core.data.remote.RemoteDataSource
 import com.example.core.data.remote.network.ApiService
 import com.example.core.domain.repository.IMovieRepository
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -17,22 +19,27 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val databaseModule = module {
+    // Provide MovieDao as a singleton
+    factory { get<MovieDatabase>().movieDao() }
+//
+    // Provide RemoteKeysDao as a singleton
+    factory { get<MovieDatabase>().remoteKeysDao() }
+
+    factory { get<MovieDatabase>().movieFavoriteDao() }
+
+    factory { DatabaseTransactionHelper(get()) }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("example".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             MovieDatabase::class.java, "Movie.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 
-    // Provide MovieDao as a singleton
-    single { get<MovieDatabase>().movieDao() }
-//
-    // Provide RemoteKeysDao as a singleton
-    single { get<MovieDatabase>().remoteKeysDao() }
 
-    single { get<MovieDatabase>().movieFavoriteDao() }
-
-    single { DatabaseTransactionHelper(get()) }
 }
 
 val networkModule = module {

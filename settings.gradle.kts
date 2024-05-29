@@ -19,6 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
+
 rootProject.name = "Moviedb"
 include(":app")
 include(":core")

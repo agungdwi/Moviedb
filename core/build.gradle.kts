@@ -10,18 +10,55 @@ android {
     namespace = "com.example.core"
     compileSdk = 34
 
+
+
     defaultConfig {
         minSdk = 24
+        multiDexEnabled = true
+
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = false
+        getByName("release") {
+            // Enables code shrinking, obfuscation, and optimization for only
+            // your project's release build type. Make sure to use a build
+            // variant with `isDebuggable=false`.
+            isMinifyEnabled = true
+
+            // Enables resource shrinking, which is performed by the
+            // Android Gradle plugin.
+            isShrinkResources = false
+
             proguardFiles(
+                // Includes the default ProGuard rules files that are packaged with
+                // the Android Gradle plugin. To learn more, go to the section about
+                // R8 configuration files.
                 getDefaultProguardFile("proguard-android-optimize.txt"),
+
+                // Includes a local, custom Proguard rules file
+                "proguard-rules.pro"
+            )
+        }
+        getByName("debug") {
+            // Enables code shrinking, obfuscation, and optimization for only
+            // your project's release build type. Make sure to use a build
+            // variant with `isDebuggable=false`.
+            isMinifyEnabled = true
+
+            // Enables resource shrinking, which is performed by the
+            // Android Gradle plugin.
+            isShrinkResources = false
+
+            proguardFiles(
+                // Includes the default ProGuard rules files that are packaged with
+                // the Android Gradle plugin. To learn more, go to the section about
+                // R8 configuration files.
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+
+                // Includes a local, custom Proguard rules file
                 "proguard-rules.pro"
             )
         }
@@ -40,37 +77,12 @@ android {
 }
 
 dependencies {
-
-
-    api(libs.material)
-    api(libs.androidx.appcompat)
-    api(libs.androidx.core.ktx)
-    api(libs.androidx.constraintlayout)
-    api(libs.androidx.swiperefreshlayout)
-    api(libs.glide)
-    api(libs.androidx.paging.runtime.ktx)
-    api(libs.androidx.activity)
-    api(libs.junit)
-    api(libs.androidx.junit)
-    api(libs.androidx.espresso.core)
-
-    api ("com.squareup.leakcanary:leakcanary-android:2.12")
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    applySharedDeps()
 
     //coroutines Flow
-    api(libs.kotlinx.coroutines.core)
-    api(libs.kotlinx.coroutines.android)
-
-    //navigation
-    api(libs.androidx.navigation.fragment.ktx)
-    api(libs.androidx.navigation.ui.ktx)
-    api(libs.androidx.navigation.dynamic.features.fragment)
-
-    //lifecycle
-    api(libs.androidx.lifecycle.viewmodel.ktx)
-    api(libs.androidx.lifecycle.livedata.ktx)
-
-    //Timber
-    api ("com.jakewharton.timber:timber:4.7.1")
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
 
     //room
     implementation(libs.androidx.room.runtime)
@@ -83,11 +95,9 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
 
-    //koin
-    api (libs.insert.koin.koin.core)
-    api (libs.insert.koin.koin.android)
-
-    annotationProcessor(libs.compiler)
+    //SqlCipher
+    implementation("net.zetetic:android-database-sqlcipher:4.4.0")
+    implementation("androidx.sqlite:sqlite-ktx:2.1.0")
 
 
 }

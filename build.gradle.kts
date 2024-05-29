@@ -1,3 +1,5 @@
+
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     alias(libs.plugins.android.application) apply false
@@ -13,9 +15,11 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        jcenter()
     }
 
     dependencies {
         classpath (libs.androidx.navigation.safe.args.gradle.plugin)
+        classpath ("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0")
     }
 }

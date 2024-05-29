@@ -1,6 +1,7 @@
 package com.example.moviedb.presentation.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,6 +68,7 @@ class SearchFragment : Fragment() {
                     is Resource.Error -> {
                         binding.emptyLy.mainEmpty.visibility = View.VISIBLE
                         binding.progressBar.visibility = View.GONE
+                        movies.message?.let { Log.d("test", it) }
                         Toast.makeText(requireActivity(), movies.message, Toast.LENGTH_SHORT).show()
                     }
                     is Resource.Loading -> {

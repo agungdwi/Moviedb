@@ -2,7 +2,7 @@ package com.example.moviedb
 
 import android.content.Context
 
-object utils {
+object Utils {
 
     fun calculateSpanCount(context: Context): Int {
         val displayMetrics = context.resources.displayMetrics

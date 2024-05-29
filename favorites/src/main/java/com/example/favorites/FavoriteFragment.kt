@@ -12,7 +12,7 @@ import com.example.core.domain.model.Movie
 import com.example.core.ui.MovieListAdapter
 import com.example.favorites.databinding.FragmentFavoriteBinding
 import com.example.favorites.di.favoriteModule
-import com.example.moviedb.utils.calculateSpanCount
+import com.example.moviedb.Utils.calculateSpanCount
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 

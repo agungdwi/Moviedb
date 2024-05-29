@@ -14,7 +14,7 @@ import com.example.core.data.Resource
 import com.example.core.domain.model.Movie
 import com.example.core.ui.MovieListAdapter
 import com.example.moviedb.databinding.FragmentSearchBinding
-import com.example.moviedb.utils.calculateSpanCount
+import com.example.moviedb.Utils.calculateSpanCount
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {
@@ -68,7 +68,6 @@ class SearchFragment : Fragment() {
                     is Resource.Error -> {
                         binding.emptyLy.mainEmpty.visibility = View.VISIBLE
                         binding.progressBar.visibility = View.GONE
-                        movies.message?.let { Log.d("test", it) }
                         Toast.makeText(requireActivity(), movies.message, Toast.LENGTH_SHORT).show()
                     }
                     is Resource.Loading -> {

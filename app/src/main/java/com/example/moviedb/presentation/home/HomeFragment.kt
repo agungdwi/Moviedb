@@ -1,7 +1,6 @@
 package com.example.moviedb.presentation.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,7 @@ import com.example.core.ui.LoadingStateAdapter
 import com.example.core.ui.MoviePagingAdapter
 import com.example.core.ui.MoviePagingAdapter.Companion.VIEW_TYPE_LOADING
 import com.example.moviedb.databinding.FragmentHomeBinding
-import com.example.moviedb.utils.calculateSpanCount
+import com.example.moviedb.Utils.calculateSpanCount
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

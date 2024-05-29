@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.Flow
 
 class RemoteDataSource(private val apiService: ApiService) {
 
+    private val ioDispatcher = Dispatchers.IO
     suspend fun searchMovies(query: String): Flow<ApiResponse<List<MovieResponse>>> {
         return flow {
             try {
@@ -26,6 +27,6 @@ class RemoteDataSource(private val apiService: ApiService) {
             } catch (e : Exception){
                 emit(ApiResponse.Error(e.toString()))
             }
-        }.flowOn(Dispatchers.IO)
+        }.flowOn(ioDispatcher)
     }
 }

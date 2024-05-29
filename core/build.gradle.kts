@@ -16,7 +16,12 @@ android {
         minSdk = 24
         multiDexEnabled = true
 
-
+        buildConfigField("String", "KEY",
+            "\"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZjI5YjNlMmIzZTZmYTg1YjAwYTFjODM4ZjU3MmMzMCIsInN1YiI6IjY2MzczYTFlOWE2NGMxMDEyYzNmMjNjOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vPvhq436kIoYmA5JI9gbkwkgwmjeOnZkpsKJ9DzUmLw\""
+        )
+        buildConfigField("String", "URL",
+            "\"https://api.themoviedb.org/3/\""
+        )
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -46,7 +51,7 @@ android {
             // Enables code shrinking, obfuscation, and optimization for only
             // your project's release build type. Make sure to use a build
             // variant with `isDebuggable=false`.
-            isMinifyEnabled = true
+            isMinifyEnabled = false
 
             // Enables resource shrinking, which is performed by the
             // Android Gradle plugin.
@@ -73,6 +78,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 

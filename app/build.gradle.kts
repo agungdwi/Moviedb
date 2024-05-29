@@ -48,11 +48,11 @@ android {
             // Enables code shrinking, obfuscation, and optimization for only
             // your project's release build type. Make sure to use a build
             // variant with `isDebuggable=false`.
-            isMinifyEnabled = true
+            isMinifyEnabled = false
 
             // Enables resource shrinking, which is performed by the
             // Android Gradle plugin.
-            isShrinkResources = true
+            isShrinkResources = false
 
             proguardFiles(
                 // Includes the default ProGuard rules files that are packaged with

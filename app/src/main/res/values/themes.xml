@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorPrimaryDark</item> <!-- Dark gray -->
         <item name="colorPrimaryVariant">@color/colorPrimaryDark</item> <!-- Black -->
         <item name="colorOnPrimary">@color/textPrimary</item> <!-- White -->
+        <item name="android:windowBackground">@color/colorPrimaryDark</item>
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/white</item> <!-- Blue -->

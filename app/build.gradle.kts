@@ -54,6 +54,7 @@ android {
             // Android Gradle plugin.
             isShrinkResources = false
 
+
             proguardFiles(
                 // Includes the default ProGuard rules files that are packaged with
                 // the Android Gradle plugin. To learn more, go to the section about
@@ -87,11 +88,13 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     applySharedDeps()
 
-    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-    implementation ("androidx.activity:activity:1.9.0")
+    implementation (libs.androidx.swiperefreshlayout)
+    implementation (libs.androidx.activity.ktx)
     implementation (libs.androidx.core.splashscreen)
 
 //crashnalytics
-    implementation ("com.google.firebase:firebase-analytics-ktx:22.0.0")
-    implementation ("com.google.firebase:firebase-crashlytics:19.0.0")
+    implementation (libs.firebase.analytics.ktx)
+    implementation (libs.firebase.crashlytics)
+
+
 }

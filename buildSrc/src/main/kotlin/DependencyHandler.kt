@@ -30,6 +30,9 @@ fun DependencyHandler.applySharedDeps() {
 
     add("implementation", "androidx.multidex:multidex:2.0.1")
 
+    //shimmer
+    add("implementation", "com.facebook.shimmer:shimmer:0.5.0")
+
 
 }
 

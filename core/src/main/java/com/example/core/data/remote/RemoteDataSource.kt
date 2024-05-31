@@ -1,14 +1,12 @@
 package com.example.core.data.remote
 
-import android.util.Log
 import com.example.core.data.remote.network.ApiResponse
 import com.example.core.data.remote.network.ApiService
 import com.example.core.data.remote.response.MovieResponse
-
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.Flow
 
 class RemoteDataSource(private val apiService: ApiService) {
 

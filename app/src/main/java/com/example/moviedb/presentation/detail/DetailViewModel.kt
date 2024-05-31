@@ -9,8 +9,6 @@ import kotlinx.coroutines.launch
 
 class DetailViewModel(private val movieUseCase: MovieUseCase) : ViewModel() {
 
-
-
     fun checkFavorite(id: Int) = movieUseCase.isMovieFavorite(id).asLiveData()
 
     fun setFavorite(movie: Movie) {
@@ -28,6 +26,4 @@ class DetailViewModel(private val movieUseCase: MovieUseCase) : ViewModel() {
 
     }
 
-
-//    suspend fun checkFavorite(id: Int) = movieUseCase.isMovieFavorite(id)
 }

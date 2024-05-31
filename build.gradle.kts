@@ -15,11 +15,18 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        jcenter()
+
     }
 
     dependencies {
         classpath (libs.androidx.navigation.safe.args.gradle.plugin)
-        classpath ("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0")
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+
     }
 }

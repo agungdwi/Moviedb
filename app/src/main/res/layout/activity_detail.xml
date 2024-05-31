@@ -5,14 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:fillViewport="true"
     tools:context=".presentation.detail.DetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark">
 
         <FrameLayout
             android:id="@+id/backdrop_layout"
@@ -76,6 +75,7 @@
                 android:id="@+id/iv_poster"
                 android:layout_width="150dp"
                 android:layout_height="220dp"
+                android:contentDescription="@string/poster"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="@+id/backdrop_layout"
                 app:layout_constraintStart_toStartOf="@+id/backdrop_layout"
@@ -138,7 +138,6 @@
             android:layout_marginStart="8dp"
             android:textColor="@color/white"
             android:textSize="14sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cd_poster"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
@@ -161,7 +160,8 @@
             android:id="@+id/iv_divider"
             android:layout_width="0dp"
             android:layout_height="2dp"
-            android:src="@color/white"
+            android:contentDescription="@string/divider"
+            android:src="@color/colorAccent"
             android:layout_marginTop="2dp"
             app:layout_constraintEnd_toEndOf="@+id/tv_overview"
             app:layout_constraintStart_toStartOf="@+id/tv_overview"
@@ -173,15 +173,12 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
+            android:paddingBottom="16dp"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_overview"
-            tools:text="dasdasd ferewcd advrr asdas rgrgs greger vvgre asasd eerwefd dsfs" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_overview"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

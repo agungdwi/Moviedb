@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".presentation.home.HomeFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_movies"
@@ -23,9 +23,11 @@
             app:spanCount="2" />
 
         <include
-        android:id="@+id/empty_ly"
-        layout="@layout/include_empty" />
+            android:id="@+id/empty_ly"
+            layout="@layout/include_empty"
+            android:visibility="gone" />
 
     </LinearLayout>
+
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

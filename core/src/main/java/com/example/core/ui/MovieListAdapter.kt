@@ -1,5 +1,7 @@
 package com.example.core.ui
 
+import android.R.attr
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -11,7 +13,7 @@ import com.example.core.databinding.ItemMovieBinding
 import com.example.core.domain.model.Movie
 
 
-class MovieListAdapter: ListAdapter<Movie, MovieListAdapter.ViewHolder>(DIFF_CALLBACK) {
+class MovieListAdapter : ListAdapter<Movie, MovieListAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     var onItemClick: ((Movie) -> Unit)? = null
 
@@ -27,17 +29,23 @@ class MovieListAdapter: ListAdapter<Movie, MovieListAdapter.ViewHolder>(DIFF_CAL
         }
     }
 
-    class ViewHolder(private val binding: ItemMovieBinding, private val onItemClick: ((Movie) -> Unit)?): RecyclerView.ViewHolder(binding.root){
-        fun bind(data: Movie){
+    class ViewHolder(
+        private val binding: ItemMovieBinding,
+        private val onItemClick: ((Movie) -> Unit)?
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: Movie) {
 
             binding.apply {
                 tvTitle.text = data.title
+                val imagePath =
+                    if (data.posterPath != "") "https://image.tmdb.org/t/p/original/${data.posterPath}" else R.drawable.image_not_found
+
                 Glide.with(itemView.context)
-                    .load("https://image.tmdb.org/t/p/original/${data.posterPath}")
-                    .placeholder(R.drawable.image_not_found)
+                    .load(imagePath)
+                    .placeholder(R.drawable.placeholder)
                     .into(ivMovie)
+
                 ivMovie.contentDescription = data.title
-//                ivForeground.contentDescription = data.title
 
             }
 

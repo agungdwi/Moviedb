@@ -69,6 +69,8 @@ class HomeFragment : Fragment() {
 
         homeViewModel.movies.observe(viewLifecycleOwner) { pagingData ->
             adapter.submitData(lifecycle, pagingData)
+
+
         }
 
         adapter.loadStateFlow.asLiveData().observe(viewLifecycleOwner) { loadState ->

@@ -1,7 +1,6 @@
 package com.example.moviedb.presentation.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.core.data.Resource
 import com.example.core.domain.model.Movie
 import com.example.core.ui.MovieListAdapter
-import com.example.moviedb.databinding.FragmentSearchBinding
 import com.example.moviedb.Utils.calculateSpanCount
+import com.example.moviedb.databinding.FragmentSearchBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {

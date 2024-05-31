@@ -29,7 +29,7 @@ class MovieRepository (
         @OptIn(ExperimentalPagingApi::class)
         return Pager(
             config = PagingConfig(
-                pageSize = 5,
+                pageSize = 9,
 
             ),
             remoteMediator = MovieRemoteMediator(apiService, localDataSource,transactionHelper),

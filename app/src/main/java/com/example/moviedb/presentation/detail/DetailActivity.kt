@@ -45,9 +45,11 @@ class DetailActivity : AppCompatActivity() {
                 .load("https://image.tmdb.org/t/p/original/${domain.posterPath}")
                 .placeholder(com.example.core.R.drawable.image_not_found)
                 .into(binding.ivPoster)
+            val imagePath =
+                if (domain.posterPath != "") "https://image.tmdb.org/t/p/original/${domain.posterPath}" else com.example.core.R.drawable.image_not_found
             Glide.with(this@DetailActivity)
-                .load("https://image.tmdb.org/t/p/original/${domain.backdropPath}")
-                .placeholder(com.example.core.R.drawable.image_not_found)
+                .load(imagePath)
+                .placeholder(com.example.core.R.drawable.placeholder)
                 .into(binding.ivBackdrop)
 
             binding.ivPoster.contentDescription = movie.title

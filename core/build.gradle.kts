@@ -28,42 +28,20 @@ android {
 
     buildTypes {
         getByName("release") {
-            // Enables code shrinking, obfuscation, and optimization for only
-            // your project's release build type. Make sure to use a build
-            // variant with `isDebuggable=false`.
             isMinifyEnabled = true
 
-            // Enables resource shrinking, which is performed by the
-            // Android Gradle plugin.
-            isShrinkResources = false
-
             proguardFiles(
-                // Includes the default ProGuard rules files that are packaged with
-                // the Android Gradle plugin. To learn more, go to the section about
-                // R8 configuration files.
                 getDefaultProguardFile("proguard-android-optimize.txt"),
 
-                // Includes a local, custom Proguard rules file
                 "proguard-rules.pro"
             )
         }
         getByName("debug") {
-            // Enables code shrinking, obfuscation, and optimization for only
-            // your project's release build type. Make sure to use a build
-            // variant with `isDebuggable=false`.
             isMinifyEnabled = false
 
-            // Enables resource shrinking, which is performed by the
-            // Android Gradle plugin.
-            isShrinkResources = false
-
             proguardFiles(
-                // Includes the default ProGuard rules files that are packaged with
-                // the Android Gradle plugin. To learn more, go to the section about
-                // R8 configuration files.
                 getDefaultProguardFile("proguard-android-optimize.txt"),
 
-                // Includes a local, custom Proguard rules file
                 "proguard-rules.pro"
             )
         }
@@ -102,8 +80,8 @@ dependencies {
     implementation(libs.logging.interceptor)
 
     //SqlCipher
-    implementation("net.zetetic:android-database-sqlcipher:4.4.0")
-    implementation("androidx.sqlite:sqlite-ktx:2.1.0")
+    implementation(libs.android.database.sqlcipher)
+    implementation(libs.androidx.sqlite.ktx)
 
 
 }

@@ -32,15 +32,15 @@ class MoviePagingAdapter: PagingDataAdapter<Movie, MoviePagingAdapter.ViewHolder
 
                 binding.apply {
                     tvTitle.text = data.title
+                    val imagePath =
+                        if (data.posterPath != "") "https://image.tmdb.org/t/p/original/${data.posterPath}" else R.drawable.image_not_found
 
                     Glide.with(itemView.context)
-                        .load("https://image.tmdb.org/t/p/original/${data.posterPath}")
-                        .placeholder(R.drawable.image_not_found)
+                        .load(imagePath)
+                        .placeholder(R.drawable.placeholder)
                         .into(ivMovie)
+
                     ivMovie.contentDescription = data.title
-//                    ivForeground.contentDescription = data.title
-
-
                 }
 
             binding.root.setOnClickListener {

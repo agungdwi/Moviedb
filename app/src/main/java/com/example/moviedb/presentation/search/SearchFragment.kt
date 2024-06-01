@@ -21,9 +21,6 @@ class SearchFragment : Fragment() {
     private val searchViewModel: SearchViewModel by viewModel()
     private lateinit var binding: FragmentSearchBinding
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -67,13 +64,16 @@ class SearchFragment : Fragment() {
                     is Resource.Error -> {
                         binding.emptyLy.mainEmpty.visibility = View.VISIBLE
                         binding.progressBar.visibility = View.GONE
+                        binding.rvMovies.visibility = View.GONE
                         Toast.makeText(requireActivity(), movies.message, Toast.LENGTH_SHORT).show()
                     }
                     is Resource.Loading -> {
+                        binding.rvMovies.visibility = View.GONE
                         binding.emptyLy.mainEmpty.visibility = View.GONE
                         binding.progressBar.visibility = View.VISIBLE
                     }
                     is Resource.Success -> {
+                        binding.rvMovies.visibility = View.VISIBLE
                         binding.emptyLy.mainEmpty.visibility = View.GONE
                         binding.progressBar.visibility = View.GONE
                         adapter.submitList(movies.data)

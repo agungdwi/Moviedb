@@ -18,21 +18,22 @@ import com.example.moviedb.databinding.FragmentHomeBinding
 import com.example.moviedb.Utils.calculateSpanCount
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class HomeFragment : Fragment() {
     private val homeViewModel: HomeViewModel by viewModel()
-    private lateinit var binding: FragmentHomeBinding
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private lateinit var adapter: MoviePagingAdapter
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            adapter.refresh()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
         return binding.root
     }
 
@@ -64,13 +65,9 @@ class HomeFragment : Fragment() {
         binding.rvMovies.adapter = adapter.withLoadStateFooter(
             footer = LoadingStateAdapter { adapter.retry() }
         )
-        binding.rvMovies.layoutManager = layoutManager
-
 
         homeViewModel.movies.observe(viewLifecycleOwner) { pagingData ->
             adapter.submitData(lifecycle, pagingData)
-
-
         }
 
         adapter.loadStateFlow.asLiveData().observe(viewLifecycleOwner) { loadState ->
@@ -82,20 +79,11 @@ class HomeFragment : Fragment() {
                 binding.emptyLy.mainEmpty.visibility = View.GONE
             }
         }
-
-        binding.swipeRefreshLayout.setOnRefreshListener {
-            adapter.refresh()
-            binding.swipeRefreshLayout.isRefreshing = false
-        }
-
-
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        // Detach the SwipeRefreshLayout to prevent leaking
-        (binding.swipeRefreshLayout.parent as? ViewGroup)?.removeView(binding.swipeRefreshLayout)
-
+        _binding = null
     }
 
     override fun onPause() {
@@ -107,5 +95,4 @@ class HomeFragment : Fragment() {
         super.onResume()
         binding.swipeRefreshLayout.isEnabled = true
     }
-
 }

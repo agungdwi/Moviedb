@@ -9,16 +9,19 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-        <ImageView
+        <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/iv_search"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            app:lottie_fileName="empty.json"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/movies_empty"
-            app:srcCompat="@drawable/baseline_search_off_24" />
+            />
+
 
         <TextView
             android:id="@+id/empty_text"

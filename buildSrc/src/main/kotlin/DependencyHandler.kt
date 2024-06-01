@@ -33,6 +33,9 @@ fun DependencyHandler.applySharedDeps() {
     //shimmer
     add("implementation", "com.facebook.shimmer:shimmer:0.5.0")
 
+    //lottie
+    add("implementation", "com.airbnb.android:lottie:6.4.1")
+
 
 }
 

@@ -16,6 +16,8 @@ kotlinxCoroutinesAndroid = "1.7.1"
 roomKtx = "2.6.1"
 sqliteKtx = "2.4.0"
 swiperefreshlayout = "1.1.0"
+googleGmsGoogleServices = "4.4.2"
+googleFirebaseCrashlytics = "3.0.1"
 
 
 [libraries]

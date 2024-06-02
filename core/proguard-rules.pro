@@ -32,3 +32,4 @@
 #-dontwarn com.example.core.ui.MovieListAdapter
 #-dontwarn com.example.core.ui.MoviePagingAdapter
 -keep class com.example.core.** { *; }
+

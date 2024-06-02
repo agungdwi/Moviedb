@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
@@ -14,14 +13,13 @@ import com.example.core.domain.model.Movie
 import com.example.core.ui.LoadingStateAdapter
 import com.example.core.ui.MoviePagingAdapter
 import com.example.core.ui.MoviePagingAdapter.Companion.VIEW_TYPE_LOADING
-import com.example.moviedb.databinding.FragmentHomeBinding
 import com.example.moviedb.Utils.calculateSpanCount
+import com.example.moviedb.databinding.FragmentHomeBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
     private val homeViewModel: HomeViewModel by viewModel()
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter: MoviePagingAdapter
 
     override fun onCreateView(
@@ -29,18 +27,13 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        binding.swipeRefreshLayout.setOnRefreshListener {
-            adapter.refresh()
-            binding.swipeRefreshLayout.isRefreshing = false
-        }
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val supportActionBar = (requireActivity() as AppCompatActivity).supportActionBar
-        supportActionBar?.show()
         adapter = MoviePagingAdapter().apply {
             onItemClick = { movie: Movie ->
                 val action = HomeFragmentDirections.actionNavigationHomeToDetailActivity(movie)
@@ -78,17 +71,41 @@ class HomeFragment : Fragment() {
             } else {
                 binding.emptyLy.mainEmpty.visibility = View.GONE
             }
+
+            // Check if refresh is in progress and load state is not loading
+            if (binding.swipeRefreshLayout.isRefreshing && loadState.refresh is LoadState.NotLoading) {
+                // Set refreshing to false after refresh operation finishes
+                binding.swipeRefreshLayout.isRefreshing = false
+            }
+        }
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.swipeRefreshLayout.isRefreshing = true
+            adapter.refresh()
+            binding.swipeRefreshLayout.isRefreshing = false
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        binding.swipeRefreshLayout.setOnRefreshListener(null)
+        binding.rvMovies.adapter = null
+        binding.swipeRefreshLayout.clearAnimation()
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.swipeRefreshLayout.isEnabled = false
+        binding.swipeRefreshLayout.clearAnimation()
+        binding.swipeRefreshLayout.setOnRefreshListener(null)
+
     }
 
     override fun onPause() {
         super.onPause()
         binding.swipeRefreshLayout.isEnabled = false
+        binding.swipeRefreshLayout.clearAnimation()
     }
 
     override fun onResume() {

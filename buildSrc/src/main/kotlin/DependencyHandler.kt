@@ -17,12 +17,9 @@ fun DependencyHandler.applySharedDeps() {
     add("implementation", "androidx.navigation:navigation-ui-ktx:2.7.0")
     add("implementation", "androidx.navigation:navigation-dynamic-features-fragment:2.7.0")
 
-    //lifcycle
+    //lifecycle
     add("implementation", "androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     add("implementation", "androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
-
-    //Timber
-    add("implementation", "com.jakewharton.timber:timber:4.7.1")
 
     //koin
     add("implementation", "io.insert-koin:koin-android:3.2.0")
@@ -36,6 +33,14 @@ fun DependencyHandler.applySharedDeps() {
     //lottie
     add("implementation", "com.airbnb.android:lottie:6.4.1")
 
+    //unit test
+    add("androidTestImplementation", "androidx.arch.core:core-testing:2.2.0")
+    add("androidTestImplementation", "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+
+    add("testImplementation", "androidx.arch.core:core-testing:2.2.0")
+    add("testImplementation", "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+    add("testImplementation", "org.mockito:mockito-core:4.4.0")
+    add("testImplementation", "org.mockito:mockito-inline:4.4.0")
 
 }
 

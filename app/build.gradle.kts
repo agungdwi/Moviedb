@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -9,6 +11,10 @@ plugins {
 android {
     namespace = "com.example.moviedb"
     compileSdk = 34
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 
     defaultConfig {
         applicationId = "com.example.moviedb"
@@ -22,46 +28,18 @@ android {
 
     }
 
-
     buildTypes {
         getByName("release") {
-            // Enables code shrinking, obfuscation, and optimization for only
-            // your project's release build type. Make sure to use a build
-            // variant with `isDebuggable=false`.
             isMinifyEnabled = true
-
-            // Enables resource shrinking, which is performed by the
-            // Android Gradle plugin.
-            isShrinkResources = true
-
             proguardFiles(
-                // Includes the default ProGuard rules files that are packaged with
-                // the Android Gradle plugin. To learn more, go to the section about
-                // R8 configuration files.
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-
-                // Includes a local, custom Proguard rules file
                 "proguard-rules.pro"
             )
         }
         getByName("debug") {
-            // Enables code shrinking, obfuscation, and optimization for only
-            // your project's release build type. Make sure to use a build
-            // variant with `isDebuggable=false`.
-            isMinifyEnabled = false
-
-            // Enables resource shrinking, which is performed by the
-            // Android Gradle plugin.
-            isShrinkResources = false
-
-
+            isMinifyEnabled = true
             proguardFiles(
-                // Includes the default ProGuard rules files that are packaged with
-                // the Android Gradle plugin. To learn more, go to the section about
-                // R8 configuration files.
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-
-                // Includes a local, custom Proguard rules file
                 "proguard-rules.pro"
             )
         }
@@ -92,9 +70,8 @@ dependencies {
     implementation (libs.androidx.activity.ktx)
     implementation (libs.androidx.core.splashscreen)
 
-//crashnalytics
+    //crashnalytics
     implementation (libs.firebase.analytics.ktx)
     implementation (libs.firebase.crashlytics)
-
 
 }

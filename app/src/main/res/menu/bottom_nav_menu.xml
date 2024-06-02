@@ -3,16 +3,23 @@
 
     <item
         android:id="@+id/navigation_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
 
     <item
         android:id="@+id/navigation_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:icon="@drawable/baseline_search_24"
-        android:title="@string/tittle_search" />
+        android:title="@string/tittle_search"
+        />
 
     <item
         android:id="@+id/navigation_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:icon="@drawable/baseline_favorite_24"
         android:title="@string/title_favorite" />
 

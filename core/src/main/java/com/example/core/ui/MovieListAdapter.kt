@@ -1,7 +1,5 @@
 package com.example.core.ui
 
-import android.R.attr
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil

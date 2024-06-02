@@ -105,3 +105,4 @@
 -keepclassmembers class com.example.core.data.remote.response.** {
   public <init>();
 }
+

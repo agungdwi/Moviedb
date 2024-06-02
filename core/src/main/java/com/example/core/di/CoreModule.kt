@@ -22,13 +22,13 @@ import java.util.concurrent.TimeUnit
 
 val databaseModule = module {
     // Provide MovieDao as a singleton
-    factory { get<MovieDatabase>().movieDao() }
+    single { get<MovieDatabase>().movieDao() }
     // Provide RemoteKeysDao as a singleton
-    factory { get<MovieDatabase>().remoteKeysDao() }
+    single { get<MovieDatabase>().remoteKeysDao() }
 
-    factory { get<MovieDatabase>().movieFavoriteDao() }
+    single { get<MovieDatabase>().movieFavoriteDao() }
 
-    factory { DatabaseTransactionHelper(get()) }
+    single { DatabaseTransactionHelper(get()) }
     single {
         val passphrase: ByteArray = SQLiteDatabase.getBytes("example".toCharArray())
         val factory = SupportFactory(passphrase)

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.core.data.Resource
 import com.example.core.domain.model.Movie
 import com.example.core.ui.MovieListAdapter
+import com.example.moviedb.R
 import com.example.moviedb.Utils.calculateSpanCount
 import com.example.moviedb.databinding.FragmentSearchBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -36,7 +37,7 @@ class SearchFragment : Fragment() {
         val layoutManager = GridLayoutManager(requireActivity(), calculateSpanCount(requireActivity()))
         binding.rvMovies.layoutManager = layoutManager
         binding.rvMovies.adapter = adapter
-
+        binding.emptyLy.tvError.text = getString(R.string.search_movies)
         adapter.onItemClick = {movie: Movie ->
             val action = SearchFragmentDirections.actionNavigationSearchToDetailActivity(movie)
             findNavController().navigate(action)
@@ -75,6 +76,7 @@ class SearchFragment : Fragment() {
                         binding.progressBar.visibility = View.GONE
                         adapter.submitList(movies.data)
                         if (movies.data?.isEmpty() == true){
+                            binding.emptyLy.tvError.text = getString(R.string.movies_empty)
                             binding.emptyLy.mainEmpty.visibility = View.VISIBLE
                         }
                     }

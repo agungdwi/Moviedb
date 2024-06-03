@@ -32,6 +32,7 @@ I Hope this Project will help someone, if you feel helped with this project, you
 
 ## Tech Stack
 - MVVM (Model-View-ViewModel) Architecture Pattern
+- Paging 3 With Remote Mediator
 - Modularization (core module)
 - Dynamic Feature (favorite module)
 - Clean Architecture (data, domain, presentation)

@@ -11,4 +11,5 @@
   <a href="https://github.com/agungdwi/SubmissionMADE2/"><img alt="Circle CI" src="https://circleci.com/gh/agungdwi/SubmissionMADE2.svg?style=shield"></a>
 </p>
 
-![Group 1](https://github.com/agungdwi/SubmissionMADE2/assets/89433301/39b61436-0189-49ff-8dae-01cbf5f889b0)
+![Group 1](https://github.com/agungdwi/SubmissionMADE2/assets/89433301/0e508877-1e7b-444d-86cf-44c8aa0dc49e)
+

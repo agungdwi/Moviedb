@@ -25,10 +25,13 @@ I Use the [TheMovieDatabase](https://www.themoviedb.org/) for the data source. f
 
 I Hope this Project will help someone, if you feel helped with this project, you can give stars to support me, thank you very much :)
 
+<p>Rating : :star: :star: :star: :star: :star:</p>
+
 ## Features
 - Get popular Movies 
 - Search the Movies 
-- Favorited Movies 
+- Favorited Movies
+- Detail Movies
 
 ## Tech Stack
 - MVVM (Model-View-ViewModel) Architecture Pattern
@@ -44,3 +47,5 @@ I Hope this Project will help someone, if you feel helped with this project, you
 - Encryption with SQLCipher
 - Certificate Pinning with OkHttp
 - Continuous Integration with Circle-CI
+
+

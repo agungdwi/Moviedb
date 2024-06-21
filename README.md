@@ -12,6 +12,8 @@
 </p>
 
 ![Group 1](https://github.com/agungdwi/SubmissionMADE2/assets/89433301/0e508877-1e7b-444d-86cf-44c8aa0dc49e)
+## Apps
+Moviedb is a user-friendly platform that enables users to effortlessly search for movies. The app is developed in Kotlin language using the TMDB API and follows the MVVM pattern and clean architecture principles
 
 ## Introduction
 
